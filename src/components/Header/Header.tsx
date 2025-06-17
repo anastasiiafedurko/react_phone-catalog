@@ -22,7 +22,7 @@ export const Header = () => {
     0
   );
 
-  const totalFavouritesItems = favouritesCtx.items.length;
+  const totalFavouritesItems = favouritesCtx?.items.length;
 
   return (
     <header className="w-full border-b shadow-md bg-white">
