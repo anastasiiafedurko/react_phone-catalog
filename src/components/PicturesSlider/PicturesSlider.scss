@@ -1,0 +1,53 @@
+.bunner .slick-slider {
+  min-height: inherit;
+}
+
+.bunner .slick-slide,
+.bunner .slick-slide > div {
+  min-height: inherit;
+}
+
+.bunner .slick-list {
+  min-height: inherit;
+}
+
+.bunner .slick-track {
+  min-height: inherit;
+}
+
+.bunner .slick-initialized {
+  min-height: inherit;
+}
+
+.bunner .slick-prev,
+.bunner .slick-next {
+  width: 32px !important;
+  height: 100% !important;
+
+  border: 1px solid #b4bdc3 !important;
+  background-color: white !important;
+  color: #313237 !important;
+  z-index: 10;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.bunner .slick-prev:hover,
+.bunner .slick-next:hover {
+  border-color: #313237 !important;
+}
+
+@media (max-width: 640px) {
+  .bunner .slick-prev,
+  .bunner .slick-next {
+    display: none !important;
+  }
+}
+
+.bunner .slick-prev svg,
+.bunner .slick-next svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block;
+}
