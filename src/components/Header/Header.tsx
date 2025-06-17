@@ -22,7 +22,7 @@ export const Header = () => {
     0
   );
 
-  const totalFavouritesItems = favouritesCtx?.items.length;
+  const totalFavouritesItems = favouritesCtx.items.length;
 
   return (
     <header className="w-full border-b shadow-md bg-white">
@@ -30,7 +30,12 @@ export const Header = () => {
         {/* Logo */}
         <div className="text-xl font-bold flex flex-col leading-tight">
           <a href="#">
-            <img src="../../../public/img/logo.png" className="w-20 h-15" />
+            {/* <img src="../../../public/img/logo.png" className="w-20 h-15" /> */}
+            <img
+              src={`${import.meta.env.BASE_URL}img/logo.png`}
+              className="w-20 h-15"
+              alt="Logo"
+            />
           </a>
         </div>
         <NavBar />
