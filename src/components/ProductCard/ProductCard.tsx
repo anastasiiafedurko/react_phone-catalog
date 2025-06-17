@@ -30,15 +30,13 @@ export const ProductCard: React.FC<Props> = ({
   const cartCtx = useContext(CartContext);
   const favouritesCtx = useContext(FavouritesContext);
 
-  const isItemInCart = !!cartCtx.items.find((item) => item.id === id);
-  const isItemInFavourites = !!favouritesCtx.items.find(
-    (item) => item.id === id
+  const isItemInCart = !!cartCtx?.items.find((item) => item.id === id);
+  const isItemInFavourites = !!favouritesCtx?.items.find(
+    (item) => item.id === +id
   );
 
-  console.log(isItemInFavourites);
-
   const handleAddProductToCart = () => {
-    cartCtx.addItem({
+    cartCtx?.addItem({
       id,
       name,
       image,
@@ -47,22 +45,27 @@ export const ProductCard: React.FC<Props> = ({
       screen,
       capacity,
       ram,
+      quantity: 1,
     });
   };
 
   const handleAddProductToFavourites = () => {
-    isItemInFavourites
-      ? favouritesCtx.removeItem(id)
-      : favouritesCtx.addItem({
-          id,
-          name,
-          image,
-          price,
-          fullPrice,
-          screen,
-          capacity,
-          ram,
-        });
+    // isItemInFavourites
+    //   ? favouritesCtx?.removeItem(id)
+    //   : favouritesCtx?.addItem({
+    //       id: Number(id),
+    //       name,
+    //       image,
+    //       price,
+    //       fullPrice,
+    //       screen,
+    //       capacity,
+    //       ram,
+    //       category,
+    //       itemId,
+    //       color,
+    //       year,
+    //     });
   };
 
   return (

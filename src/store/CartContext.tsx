@@ -1,16 +1,20 @@
-import React, { useCallback, useMemo, useReducer, useState } from "react";
+import React, { useCallback, useMemo, useReducer } from "react";
+import {
+  CartAction,
+  CartContextType,
+  CartItemType,
+  CartState,
+} from "../types/cartItem";
 
-export const CartContext = React.createContext({
-  items: [],
-  addItem: (item) => {},
-  removeItem: (id) => {},
-});
+export const CartContext = React.createContext<CartContextType | undefined>(
+  undefined
+);
 
 type Props = {
   children: React.ReactNode;
 };
 
-function cartReducer(state, action) {
+function cartReducer(state: CartState, action: CartAction): CartState {
   if (action.type === "ADD_ITEM") {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
@@ -28,7 +32,7 @@ function cartReducer(state, action) {
       updatedItems.push({ ...action.item, quantity: 1 });
     }
 
-    return { ...state, items: updatedItems };
+    return { items: updatedItems };
   }
 
   if (action.type === "REMOVE_ITEM") {
@@ -37,7 +41,6 @@ function cartReducer(state, action) {
     );
 
     const existingCartItem = state.items[existingCartItemIndex];
-
     const updatedItems = [...state.items];
 
     if (existingCartItem.quantity === 1) {
@@ -50,7 +53,7 @@ function cartReducer(state, action) {
       updatedItems[existingCartItemIndex] = updatedItem;
     }
 
-    return { ...state, items: updatedItems };
+    return { items: updatedItems };
   }
 
   return state;
@@ -59,11 +62,11 @@ function cartReducer(state, action) {
 export const CartProvider: React.FC<Props> = ({ children }) => {
   const [cart, dispatchCartAction] = useReducer(cartReducer, { items: [] });
 
-  const addItem = useCallback((item) => {
+  const addItem = useCallback((item: CartItemType) => {
     dispatchCartAction({ type: "ADD_ITEM", item });
   }, []);
 
-  const removeItem = useCallback((id) => {
+  const removeItem = useCallback((id: string) => {
     dispatchCartAction({ type: "REMOVE_ITEM", id });
   }, []);
 

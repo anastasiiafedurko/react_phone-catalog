@@ -1,16 +1,24 @@
 import React, { useCallback, useMemo, useReducer } from "react";
+import {
+  FavouritesAction,
+  FavouritesContextType,
+  FavouritesItemType,
+  FavouritesState,
+} from "../types/favouritesItem";
 
-export const FavouritesContext = React.createContext({
+export const FavouritesContext = React.createContext<
+  FavouritesContextType | undefined
+>({
   items: [],
-  addItem: (item) => {},
-  removeItem: (id) => {},
+  addItem: () => {},
+  removeItem: () => {},
 });
 
 type Props = {
   children: React.ReactNode;
 };
 
-function favouritesReducer(state, action) {
+function favouritesReducer(state: FavouritesState, action: FavouritesAction) {
   if (action.type === "ADD_ITEM") {
     const existingFavouritesItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
@@ -25,10 +33,8 @@ function favouritesReducer(state, action) {
 
   if (action.type === "REMOVE_ITEM") {
     const existingFavouritesItemIndex = state.items.findIndex(
-      (item) => item.id === action.id
+      (item) => item.id === Number(action.id)
     );
-
-    const existingFavouritesItem = state.items[existingFavouritesItemIndex];
 
     const updatedItems = [...state.items];
 
@@ -45,11 +51,11 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
     items: [],
   });
 
-  const addItem = useCallback((item) => {
+  const addItem = useCallback((item: FavouritesItemType) => {
     dispatchCartAction({ type: "ADD_ITEM", item });
   }, []);
 
-  const removeItem = useCallback((id) => {
+  const removeItem = useCallback((id: string) => {
     dispatchCartAction({ type: "REMOVE_ITEM", id });
   }, []);
 

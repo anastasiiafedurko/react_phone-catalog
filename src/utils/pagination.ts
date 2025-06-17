@@ -3,7 +3,7 @@ import { PaginationRange } from "../types/paginationRange";
 export const getPaginationRange = (
   totalPage: number,
   page: number,
-  limit: number,
+  // limit: number,
   siblings: number
 ): PaginationRange[] => {
   const result: PaginationRange[] = [];

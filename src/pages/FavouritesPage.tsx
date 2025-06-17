@@ -9,7 +9,7 @@ export const FavouritesPage = () => {
     <>
       <h1 className="text-4xl font-mont-bold text-primary my-14">Favourites</h1>
 
-      <ProductsList products={favouritesCart.items} />
+      {favouritesCart && <ProductsList products={favouritesCart.items} />}
     </>
   );
 };

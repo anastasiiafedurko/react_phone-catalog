@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export const PicturesSlider = () => {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   const settings = {
     dots: true,
@@ -34,7 +34,7 @@ export const PicturesSlider = () => {
     <div className="bunner relative min-h-[320px] md:min-h-[189px] lg:min-h-[400px]">
       <ChevronLeft
         className="slick-prev"
-        onClick={() => sliderRef.current.slickPrev()}
+        onClick={() => sliderRef.current?.slickPrev()}
       />
 
       <Slider ref={sliderRef} {...settings}>
@@ -45,7 +45,7 @@ export const PicturesSlider = () => {
 
       <ChevronRight
         className="slick-next"
-        onClick={() => sliderRef.current.slickNext()}
+        onClick={() => sliderRef.current?.slickNext()}
       />
     </div>
   );

@@ -10,7 +10,7 @@ export const CartPage = () => {
       <h1 className="text-4xl font-mont-bold text-primary my-14">Cart</h1>
       <div className="flex flex-col gap-3 md:flex-row">
         <div className="flex flex-col gap-4 w-full">
-          {ctxCart.items.map((item) => (
+          {ctxCart?.items.map((item) => (
             <CartItem
               id={item.id}
               name={item.name}

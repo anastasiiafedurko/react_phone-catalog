@@ -1,7 +1,15 @@
 import { Minus, Plus, X } from "lucide-react";
 import { IconButton } from "./ui/IconButton";
 
-export const CartItem = ({ id, name, image, price, quantity }) => {
+type Props = {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+};
+
+export const CartItem: React.FC<Props> = ({ name, image, price, quantity }) => {
   return (
     <div className="flex flex-col md:flex-row border items-center px-4 py-8 gap-4">
       <div className="flex items-center gap-4 w-full md:w-2/3">

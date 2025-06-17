@@ -1,11 +1,16 @@
 import { Accessory } from "../../types/accessory";
+import { FavouritesItemType } from "../../types/favouritesItem";
 import { Phone } from "../../types/phone";
 import { Product } from "../../types/product";
 import { Tablet } from "../../types/tablet";
 import { ProductCard } from "../ProductCard";
 
 type Props = {
-  products: Product<Phone>[] | Product<Tablet>[] | Product<Accessory>[];
+  products:
+    | Product<Phone>[]
+    | Product<Tablet>[]
+    | Product<Accessory>[]
+    | FavouritesItemType[];
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {

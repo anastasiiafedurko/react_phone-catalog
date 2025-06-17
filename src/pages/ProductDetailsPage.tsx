@@ -75,6 +75,18 @@ export const ProductDetailsPage = () => {
     );
   }
 
+  function hasCamera(
+    item: Phone | Tablet | Accessory | undefined
+  ): item is Phone | Tablet {
+    return !!item && "camera" in item;
+  }
+
+  function hasZoom(
+    item: Phone | Tablet | Accessory | undefined
+  ): item is Phone | Tablet {
+    return !!item && "zoom" in item;
+  }
+
   return (
     <>
       {product && (
@@ -221,9 +233,13 @@ export const ProductDetailsPage = () => {
                   {product.item?.capacity}
                 </p>
                 <p className="text-secondary">Camera</p>
-                <p className="text-primary text-end">{product.item?.camera}</p>
+                {hasCamera(product.item) && (
+                  <p className="text-primary text-end">{product.item.camera}</p>
+                )}
                 <p className="text-secondary">Zoom</p>
-                <p className="text-primary text-end">{product.item?.zoom}</p>
+                {hasZoom(product.item) && (
+                  <p className="text-primary text-end">{product.item.camera}</p>
+                )}
                 <p className="text-secondary">Cell</p>
                 <p className="text-primary text-end">{product.item?.cell}</p>
               </div>

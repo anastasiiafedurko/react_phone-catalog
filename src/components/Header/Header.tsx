@@ -6,6 +6,7 @@ import { NavbarMenu } from "../NavBar/data";
 import { NavLink } from "react-router";
 import { CartContext } from "../../store/CartContext";
 import { FavouritesContext } from "../../store/FavouritesContext";
+import { CartItemType } from "../../types/cartItem";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +15,14 @@ export const Header = () => {
   const cartCtx = useContext(CartContext);
   const favouritesCtx = useContext(FavouritesContext);
 
-  const totalCartItems = cartCtx.items.reduce((totalNumberOfItems, item) => {
-    return totalNumberOfItems + item.quantity;
-  }, 0);
+  const totalCartItems = cartCtx?.items.reduce(
+    (totalNumberOfItems, item: CartItemType) => {
+      return totalNumberOfItems + item.quantity;
+    },
+    0
+  );
 
-  const totalFavouritesItems = favouritesCtx.items.length;
+  const totalFavouritesItems = favouritesCtx?.items.length;
 
   return (
     <header className="w-full border-b shadow-md bg-white">
