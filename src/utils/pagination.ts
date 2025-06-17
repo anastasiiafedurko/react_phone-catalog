@@ -3,9 +3,10 @@ import { PaginationRange } from "../types/paginationRange";
 export const getPaginationRange = (
   totalPage: number,
   page: number,
-  // limit: number,
+  limit: number,
   siblings: number
 ): PaginationRange[] => {
+  console.log(limit);
   const result: PaginationRange[] = [];
 
   const totalPageNoInArray = 7 + siblings;
