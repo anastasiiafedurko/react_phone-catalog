@@ -8,6 +8,8 @@ export const getPaginationRange = (
 ): PaginationRange[] => {
   const result: PaginationRange[] = [];
 
+  console.log(limit);
+
   const totalPageNoInArray = 7 + siblings;
   if (totalPageNoInArray >= totalPage) {
     for (let i = 1; i <= totalPage; i++) {

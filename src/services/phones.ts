@@ -3,7 +3,6 @@ import { Product } from "../types/product";
 
 import { getProducts } from "./products";
 
-import { supabase } from "../utils/supabaseClient";
 import { getData } from "../utils/httpClient";
 
 export async function getPhones(
