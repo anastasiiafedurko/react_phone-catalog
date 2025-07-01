@@ -58,20 +58,21 @@ export const ProductDetailsPage = () => {
     });
   }, [selectedProductId]);
 
-  function getProductByColor() {
-    return products.find(
-      (item) =>
-        item.itemId.includes(product?.item?.namespaceId || "") &&
-        item.color === product?.item?.color
-    );
-  }
-
-  function getProductByCapacity() {
+  function getProductByColor(color: string) {
     return products.find(
       (item) =>
         item.itemId.includes(product?.item?.namespaceId || "") &&
         item.capacity === product?.item?.capacity &&
-        item.color === product?.color
+        item.color === color
+    );
+  }
+
+  function getProductByCapacity(capacity: string) {
+    return products.find(
+      (item) =>
+        item.itemId.includes(product?.item?.namespaceId || "") &&
+        item.color === product?.item?.color &&
+        item.capacity === capacity
     );
   }
 
@@ -107,7 +108,7 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.colorsAvailable.map((color) => (
                       <Link
-                        to={`../${getProductByColor()?.itemId}`}
+                        to={`../${getProductByColor(color)?.itemId}`}
                         key={color}
                       >
                         <button
@@ -131,7 +132,7 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.capacityAvailable.map((capacity) => (
                       <Link
-                        to={`../${getProductByCapacity()?.itemId}`}
+                        to={`../${getProductByCapacity(capacity)?.itemId}`}
                         key={capacity}
                       >
                         <button
@@ -253,17 +254,7 @@ export const ProductDetailsPage = () => {
       {!errorMessage && (
         <ProductsSlider title="You may also like">
           {newProducts.map((product) => (
-            <ProductCard
-              id={product.itemId}
-              name={product.name}
-              image={product.image}
-              fullPrice={product.fullPrice}
-              price={product.price}
-              screen={product.screen}
-              capacity={product.capacity}
-              ram={product.ram}
-              key={product.id}
-            />
+            <ProductCard product={product} key={product.id} />
           ))}
         </ProductsSlider>
       )}

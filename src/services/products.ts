@@ -4,14 +4,34 @@ import { Product } from "../types/product";
 import { Tablet } from "../types/tablet";
 
 import { getData } from "../utils/httpClient";
+// import { supabase } from "../utils/supabaseClient";
 
-export function getProducts() {
+export async function getProducts() {
   return getData<Product[]>("/products.json");
+  // const { data, error } = await supabase.from("products").select("*");
+
+  // if (error) {
+  //   throw new Error(error.message);
+  // }
+
+  // return data as Product[];
 }
 
 export async function getProduct(itemId: string) {
   const products = await getData<Product[]>("/products.json");
   return products.find((product) => product.itemId === itemId);
+
+  // const { data, error } = await supabase
+  //   .from("products")
+  //   .select("*")
+  //   .eq("itemId", itemId)
+  //   .single();
+
+  // if (error) {
+  //   throw new Error(error.message);
+  // }
+
+  // return data;
 }
 
 export async function getProductByCategory<
@@ -21,6 +41,7 @@ export async function getProductByCategory<
   itemId: string
 ): Promise<Product<T> | null> {
   const data = await getData<T[]>(`/${category}.json`);
+
   const item = data.find((item) => item.id === itemId);
 
   if (!item) return null;

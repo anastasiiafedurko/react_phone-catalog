@@ -12,12 +12,12 @@ export const CartPage = () => {
         <div className="flex flex-col gap-4 w-full">
           {ctxCart?.items.map((item) => (
             <CartItem
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              price={item.price * item.quantity}
+              id={item.product.itemId}
+              name={item.product.name}
+              image={item.product.image}
+              price={item.product.price * item.quantity}
               quantity={item.quantity}
-              key={item.id}
+              key={item.product.id}
             />
           ))}
         </div>

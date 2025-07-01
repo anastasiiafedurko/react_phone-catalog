@@ -1,12 +1,8 @@
-import { Accessory } from "./accessory";
-import { Phone } from "./phone";
 import { Product } from "./product";
-import { Tablet } from "./tablet";
 
-export type FavouritesItemType =
-  | Product<Phone>
-  | Product<Tablet>
-  | Product<Accessory>;
+export type FavouritesItemType = {
+  product: Product;
+};
 
 export type FavouritesState = {
   items: FavouritesItemType[];
@@ -14,10 +10,10 @@ export type FavouritesState = {
 
 export type FavouritesAction =
   | { type: "ADD_ITEM"; item: FavouritesItemType }
-  | { type: "REMOVE_ITEM"; id: string };
+  | { type: "REMOVE_ITEM"; id: number };
 
 export type FavouritesContextType = {
   items: FavouritesItemType[];
   addItem: (item: FavouritesItemType) => void;
-  removeItem: (id: string) => void;
+  removeItem: (id: number) => void;
 };

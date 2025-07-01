@@ -6,7 +6,6 @@ export const getPaginationRange = (
   limit: number,
   siblings: number
 ): PaginationRange[] => {
-  console.log(limit);
   const result: PaginationRange[] = [];
 
   const totalPageNoInArray = 7 + siblings;

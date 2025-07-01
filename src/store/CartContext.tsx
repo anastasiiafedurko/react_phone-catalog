@@ -17,7 +17,7 @@ type Props = {
 function cartReducer(state: CartState, action: CartAction): CartState {
   if (action.type === "ADD_ITEM") {
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id
+      (item) => item.product.id === action.item.product.id
     );
     const updatedItems = [...state.items];
 
@@ -37,7 +37,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
 
   if (action.type === "REMOVE_ITEM") {
     const existingCartItemIndex = state.items.findIndex(
-      (item) => item.id === action.id
+      (item) => item.product.id === action.id
     );
 
     const existingCartItem = state.items[existingCartItemIndex];
@@ -66,7 +66,7 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
     dispatchCartAction({ type: "ADD_ITEM", item });
   }, []);
 
-  const removeItem = useCallback((id: string) => {
+  const removeItem = useCallback((id: number) => {
     dispatchCartAction({ type: "REMOVE_ITEM", id });
   }, []);
 

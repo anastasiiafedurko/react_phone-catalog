@@ -21,7 +21,7 @@ type Props = {
 function favouritesReducer(state: FavouritesState, action: FavouritesAction) {
   if (action.type === "ADD_ITEM") {
     const existingFavouritesItemIndex = state.items.findIndex(
-      (item) => item.id === action.item.id
+      (item) => item.product.id === action.item.product.id
     );
     const updatedItems = [...state.items];
 
@@ -33,7 +33,7 @@ function favouritesReducer(state: FavouritesState, action: FavouritesAction) {
 
   if (action.type === "REMOVE_ITEM") {
     const existingFavouritesItemIndex = state.items.findIndex(
-      (item) => item.id === Number(action.id)
+      (item) => item.product.id === action.id
     );
 
     const updatedItems = [...state.items];
@@ -55,7 +55,7 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
     dispatchCartAction({ type: "ADD_ITEM", item });
   }, []);
 
-  const removeItem = useCallback((id: string) => {
+  const removeItem = useCallback((id: number) => {
     dispatchCartAction({ type: "REMOVE_ITEM", id });
   }, []);
 

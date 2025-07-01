@@ -1,12 +1,7 @@
+import { Product } from "./product";
+
 export type CartItemType = {
-  id: string;
-  name: string;
-  image: string;
-  screen: string;
-  capacity: string;
-  ram: string;
-  fullPrice: number;
-  price: number;
+  product: Product;
   quantity: number;
 };
 
@@ -16,10 +11,10 @@ export type CartState = {
 
 export type CartAction =
   | { type: "ADD_ITEM"; item: CartItemType }
-  | { type: "REMOVE_ITEM"; id: string };
+  | { type: "REMOVE_ITEM"; id: number };
 
 export type CartContextType = {
   items: CartItemType[];
   addItem: (item: CartItemType) => void;
-  removeItem: (id: string) => void;
+  removeItem: (id: number) => void;
 };

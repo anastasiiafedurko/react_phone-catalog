@@ -26,17 +26,7 @@ export const HomePage = () => {
 
       <ProductsSlider title="Brand new models">
         {newProducts.map((product) => (
-          <ProductCard
-            id={product.itemId}
-            name={product.name}
-            image={product.image}
-            fullPrice={product.fullPrice}
-            price={product.price}
-            screen={product.screen}
-            capacity={product.capacity}
-            ram={product.ram}
-            key={product.id}
-          />
+          <ProductCard product={product} key={product.id} />
         ))}
       </ProductsSlider>
 
@@ -47,17 +37,7 @@ export const HomePage = () => {
 
       <ProductsSlider title="Hot prices">
         {hotProducts.map((product) => (
-          <ProductCard
-            id={product.itemId}
-            name={product.name}
-            image={product.image}
-            fullPrice={product.fullPrice}
-            price={product.price}
-            screen={product.screen}
-            capacity={product.capacity}
-            ram={product.ram}
-            key={product.id}
-          />
+          <ProductCard product={product} key={product.id} />
         ))}
       </ProductsSlider>
     </>
