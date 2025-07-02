@@ -1,10 +1,8 @@
 import { Heart } from "lucide-react";
-import React, { useContext } from "react";
+import React from "react";
 import { IconButton } from "../ui/IconButton";
 import { Link } from "react-router";
-import { CartContext } from "../../store/CartContext";
 import classNames from "classnames";
-import { FavouritesContext } from "../../store/FavouritesContext";
 import { Product } from "../../types/product";
 import { useCartActions } from "../../hooks/useCartActions";
 import { useFavouritesActions } from "../../hooks/useFavouritesActions";
