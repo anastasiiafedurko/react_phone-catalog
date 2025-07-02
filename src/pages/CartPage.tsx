@@ -2,8 +2,27 @@ import { useContext } from "react";
 import { CartItem } from "../components/CartItem";
 import { CartContext } from "../store/CartContext";
 
+import { Product } from "../types/product";
+
 export const CartPage = () => {
   const ctxCart = useContext(CartContext);
+
+  const totalPrice = ctxCart?.items.reduce(
+    (accumulator, currentValue) =>
+      accumulator + currentValue.product.price * currentValue.quantity,
+    0
+  );
+
+  const handlePlusItem = (product: Product<unknown>) => {
+    ctxCart?.addItem({
+      product,
+      quantity: 1,
+    });
+  };
+
+  const handleMinusItem = (product: Product<unknown>) => {
+    ctxCart?.removeItem(product.id);
+  };
 
   return (
     <>
@@ -18,15 +37,19 @@ export const CartPage = () => {
               price={item.product.price * item.quantity}
               quantity={item.quantity}
               key={item.product.id}
+              onPlus={() => handlePlusItem(item.product)}
+              onMinus={() => handleMinusItem(item.product)}
             />
           ))}
         </div>
 
         <div className="flex flex-col gap-3 border px-4 py-8 md:w-[300px] self-start">
           <p className="price font-mont-semibold text-primary text-2xl">
-            $1234
+            ${totalPrice}
           </p>
-          <p className="text-sm text-secondary">Total for 3 items</p>
+          <p className="text-sm text-secondary">
+            Total for {ctxCart?.items.length} items
+          </p>
           <hr className="mb-2" />
           <button
             type="button"

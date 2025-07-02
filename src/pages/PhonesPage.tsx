@@ -5,7 +5,7 @@ import { getPaginationRange } from "../utils/pagination";
 import { ClipLoader } from "react-spinners";
 import { PaginationRange } from "../types/paginationRange";
 import { PaginationButtons } from "../components/Pagination/PaginationButtons";
-import { useSearchParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import { ProductsFilters } from "../components/ProductsFilters/ProductsFilters";
 import { Product } from "../types/product";
 import { getSearchWith } from "../utils/searchHelper";
@@ -19,6 +19,10 @@ const defaultOptions: { text: string; value: number }[] = [4, 8, 16].map(
 );
 
 export const PhonesPage = () => {
+  const { category } = useParams<{
+    category: "phones" | "tablets" | "accessories";
+  }>();
+
   const [products, setProducts] = useState<Product<Phone>[]>([]);
 
   const [total, setTotal] = useState(0);
@@ -56,13 +60,18 @@ export const PhonesPage = () => {
     setPerPageOptions([{ value: total, text: "all" }, ...defaultOptions]);
   }, [total]);
 
+  console.log(category);
   useEffect(() => {
     getSearchWith(searchParams, {
       page: "1",
     });
     setErrorMessage("");
     setLoading(true);
-    getProductsByCategory<Phone>("phones", +params.page, perPageValue)
+    getProductsByCategory<Phone>(
+      category as "phones" | "tablets" | "accessories",
+      +params.page,
+      perPageValue
+    )
       .then((response) => {
         setProducts(response.items);
         setTotal(response.total);

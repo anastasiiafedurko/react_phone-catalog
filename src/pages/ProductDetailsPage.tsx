@@ -13,6 +13,8 @@ import { ProductsContext } from "../store/ProductContext";
 import { ProductsSlider } from "../components/ProductsSlider";
 import { ProductCard } from "../components/ProductCard";
 import { ClipLoader } from "react-spinners";
+import { useCartActions } from "../hooks/useCartActions";
+import { useFavouritesActions } from "../hooks/useFavouritesActions";
 
 const colorClasses: Record<string, string> = {
   black: "bg-black",
@@ -39,7 +41,10 @@ const colorClasses: Record<string, string> = {
 };
 
 export const ProductDetailsPage = () => {
-  const { productId } = useParams();
+  const { category, productId } = useParams<{
+    category: "phones" | "tablets" | "accessories";
+    productId: string;
+  }>();
 
   const selectedProductId = productId || "";
 
@@ -48,14 +53,20 @@ export const ProductDetailsPage = () => {
   const { products, newProducts, loading, errorMessage, loadProducts } =
     useContext(ProductsContext);
 
+  const { addProductToCart, isInCart } = useCartActions();
+
+  const { addProductToFavourites, isInFavourites } = useFavouritesActions();
+
   useEffect(() => {
     loadProducts();
   }, []);
 
   useEffect(() => {
-    getProductByCategory("phones", selectedProductId).then((product) => {
-      setProduct(product || undefined);
-    });
+    if (category && productId) {
+      getProductByCategory(category, productId).then((product) => {
+        setProduct(product || undefined);
+      });
+    }
   }, [selectedProductId]);
 
   function getProductByColor(color: string) {
@@ -108,7 +119,9 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.colorsAvailable.map((color) => (
                       <Link
-                        to={`../${getProductByColor(color)?.itemId}`}
+                        to={`../../${category}/${
+                          getProductByColor(color)?.itemId
+                        }`}
                         key={color}
                       >
                         <button
@@ -132,7 +145,9 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.capacityAvailable.map((capacity) => (
                       <Link
-                        to={`../${getProductByCapacity(capacity)?.itemId}`}
+                        to={`../../${category}/${
+                          getProductByCapacity(capacity)?.itemId
+                        }`}
                         key={capacity}
                       >
                         <button
@@ -164,12 +179,35 @@ export const ProductDetailsPage = () => {
                 <div className="flex flex-row gap-1">
                   <button
                     type="button"
-                    className="flex-auto rounded-none h-[40px] w-auto font-mont border border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary active:bg-white active:text-almost-green active:border active:border-secondary"
+                    className={classNames(
+                      "flex-auto rounded-none h-[40px] w-auto font-mont border ",
+
+                      isInCart(product.id)
+                        ? "text-almost-green border border-secondary bg-white"
+                        : "border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary"
+                    )}
+                    onClick={() => addProductToCart(product)}
                   >
-                    Add to cart
+                    {isInCart(product.id) ? "Added to cart" : "Add to cart"}
                   </button>
 
-                  <IconButton icon={<Heart />} />
+                  {isInFavourites(product.id) ? (
+                    <IconButton
+                      icon={
+                        <Heart
+                          className="#EB5757"
+                          fill="#EB5757"
+                          stroke="#EB5757"
+                        />
+                      }
+                      onClick={() => addProductToFavourites(product)}
+                    />
+                  ) : (
+                    <IconButton
+                      icon={<Heart />}
+                      onClick={() => addProductToFavourites(product)}
+                    />
+                  )}
                 </div>
 
                 <div className="grid grid-rows-3 grid-cols-2 mb-2 text-xs">

@@ -30,12 +30,13 @@ createRoot(document.getElementById("root")!).render(
             <Routes>
               <Route path="/" element={<App />}>
                 <Route path="home" element={<Navigate to="/" />} />
-                <Route path="phones" element={<PhonesPage />} />
-                <Route path="tablets" element={<TabletsPage />} />
-                <Route path="accessories" element={<AccessoriesPage />} />
-                <Route path="/product">
-                  <Route path=":productId" element={<ProductDetailsPage />} />
-                </Route>
+                <Route path=":category" element={<PhonesPage />} />
+                <Route path=":category" element={<TabletsPage />} />
+                <Route path=":category" element={<AccessoriesPage />} />
+                <Route
+                  path=":category/:productId"
+                  element={<ProductDetailsPage />}
+                />
                 <Route path="cart" element={<CartPage />} />
                 <Route path="favourites" element={<FavouritesPage />} />
                 <Route index element={<HomePage />} />

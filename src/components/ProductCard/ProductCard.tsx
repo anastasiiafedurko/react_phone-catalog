@@ -6,40 +6,21 @@ import { CartContext } from "../../store/CartContext";
 import classNames from "classnames";
 import { FavouritesContext } from "../../store/FavouritesContext";
 import { Product } from "../../types/product";
+import { useCartActions } from "../../hooks/useCartActions";
+import { useFavouritesActions } from "../../hooks/useFavouritesActions";
 
 type Props = {
   product: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const cartCtx = useContext(CartContext);
-  const favouritesCtx = useContext(FavouritesContext);
+  const { addProductToCart, isInCart } = useCartActions();
 
-  const isItemInCart = !!cartCtx?.items.find(
-    (item) => item.product.id === product.id
-  );
-  const isItemInFavourites = !!favouritesCtx?.items.find(
-    (item) => item.product.id === product.id
-  );
-
-  const handleAddProductToCart = () => {
-    cartCtx?.addItem({
-      product,
-      quantity: 1,
-    });
-  };
-
-  const handleAddProductToFavourites = () => {
-    isItemInFavourites
-      ? favouritesCtx?.removeItem(product.id)
-      : favouritesCtx?.addItem({
-          product,
-        });
-  };
+  const { addProductToFavourites, isInFavourites } = useFavouritesActions();
 
   return (
     <div className="flex flex-col justify-between w-[212px] md:w-[237px] lg:w-[272px] h-[432px] md:h-[512px] lg:h-[506px] p-8 border shadow-md">
-      <Link to={`/product/${product.itemId}`}>
+      <Link to={`/${product.category}/${product.itemId}`}>
         <img
           // src={`../../../../public/${product.image}`}
           src={`${import.meta.env.BASE_URL}${product.image}`}
@@ -73,22 +54,25 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className={classNames(
             "flex-auto rounded-none h-[40px] w-auto font-mont border ",
 
-            isItemInCart
+            isInCart(product.id)
               ? "text-almost-green border border-secondary bg-white"
               : "border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary"
           )}
-          onClick={handleAddProductToCart}
+          onClick={() => addProductToCart(product)}
         >
-          {isItemInCart ? "Added to cart" : "Add to cart"}
+          {isInCart(product.id) ? "Added to cart" : "Add to cart"}
         </button>
 
-        {isItemInFavourites ? (
+        {isInFavourites(product.id) ? (
           <IconButton
             icon={<Heart className="#EB5757" fill="#EB5757" stroke="#EB5757" />}
-            onClick={handleAddProductToFavourites}
+            onClick={() => addProductToFavourites(product)}
           />
         ) : (
-          <IconButton icon={<Heart />} onClick={handleAddProductToFavourites} />
+          <IconButton
+            icon={<Heart />}
+            onClick={() => addProductToFavourites(product)}
+          />
         )}
       </div>
     </div>
