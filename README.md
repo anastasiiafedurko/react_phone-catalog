@@ -1,51 +1,81 @@
-# React + TypeScript + Vite
+# 📱 React Phone Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a fully functional responsive front-end e-commerce catalog built with **React + TypeScript**.  
+The app includes dynamic routing, reusable components, global state with Context API, pagination, sorting, localStorage support, and smooth UI effects.
 
-Currently, two official plugins are available:
+✅ **All required features have been implemented.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔗 Live Demo
 
-## Expanding the ESLint configuration
+[View on GitHub Pages](https://anastasiiafedurko.github.io/react_phone-catalog)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## ✅ Features Implemented
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Project structure**
+
+  - All components organized in folders inside `src/components` and `src/modules`
+  - CSS Modules used for styling
+  - Page-based module architecture (HomePage, CartPage, etc.)
+
+- **General layout**
+
+  - Sticky header with logo, navigation, cart, and favorites
+  - Footer with GitHub link and "Back to top" button
+  - Smooth scrolling and hover effects
+  - All images scale by 10% on hover
+
+- **Home Page** (`/`)
+
+  - Hidden `<h1>` for accessibility
+  - Auto-rotating PicturesSlider with navigation and dots
+  - ProductsSlider for "Hot prices" and "Brand new" blocks
+  - Shop by category section
+
+- **Category Pages** (`/phones`, `/tablets`, `/accessories`)
+
+  - Products are fetched based on category
+  - Loader and error states implemented
+  - Sorting by Newest, Alphabetically, Cheapest
+  - Pagination and items-per-page selector
+  - Parameters saved in URL (e.g. `?sort=age&page=2&perPage=8`)
+
+- **Product Details Page** (`/:category/:productId`)
+
+  - Loads product data and shows loading/404 states
+  - Image selection, color, and capacity options
+  - Breadcrumbs and back button
+  - "You may also like" block with random suggestions
+
+- **Shopping Cart** (`/cart`)
+
+  - Items can be added, removed, and quantity updated
+  - Total amount and quantity calculated dynamically
+
+- **Favorites Page** (`/favorites`)
+  - Products can be added/removed from favorites via heart icon
+  - Favorites stored in Context
+
+---
+
+## 🛠 Stack
+
+- **React + TypeScript**
+- **Tailwind CSS**
+- **React Router v6**
+- **Context API**
+- **Figma** (UI implementation)
+- **GitHub Pages** for deployment
+
+---
+
+## 📁 Local Setup
+
+```bash
+git clone https://github.com/anastasiiafedurko/react_phone-catalog.git
+cd react_phone-catalog
+npm install
+npm run dev
+
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# react_phone-catalog
