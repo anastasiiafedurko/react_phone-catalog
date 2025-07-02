@@ -15,7 +15,11 @@ export const CartItem: React.FC<Props> = ({ name, image, price, quantity }) => {
       <div className="flex items-center gap-4 w-full md:w-2/3">
         <X className="h-4 w-4 text-secondary cursor-pointer" />
 
-        <img src={`../../${image}`} alt="Phone" className="w-[50px] h-[66px]" />
+        <img
+          src={`${import.meta.env.BASE_URL}${image}`}
+          alt="Phone"
+          className="w-[50px] h-[66px]"
+        />
 
         <p className="text-sm md:text-base font-medium flex-1">{name}</p>
       </div>

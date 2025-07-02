@@ -11,7 +11,10 @@ export const Footer = () => {
         {/* Logo */}
         <div className="text-xl font-bold flex flex-col leading-tight">
           <a href="#">
-            <img src="../../../public/img/logo.png" className="w-20 h-15" />
+            <img
+              src={`${import.meta.env.BASE_URL}img/logo.png`}
+              className="w-20 h-15"
+            />
           </a>
         </div>
         <ul className="flex items-center gap-6 text-secondary">

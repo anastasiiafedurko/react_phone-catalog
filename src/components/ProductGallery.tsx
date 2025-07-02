@@ -21,7 +21,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
             }`}
           >
             <img
-              src={img}
+              src={`${import.meta.env.BASE_URL}${img}`}
               alt={`thumb-${index}`}
               className="w-20 h-20 object-cover"
             />
@@ -31,7 +31,7 @@ export const ProductGallery: React.FC<Props> = ({ images }) => {
 
       <div className="flex-1 flex items-center justify-center">
         <img
-          src={images[activeIndex]}
+          src={`${import.meta.env.BASE_URL}${images[activeIndex]}`}
           alt="main-product"
           className="max-w-full max-h-[500px] object-contain rounded-lg shadow-md"
         />

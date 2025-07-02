@@ -41,7 +41,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="flex flex-col justify-between w-[212px] md:w-[237px] lg:w-[272px] h-[432px] md:h-[512px] lg:h-[506px] p-8 border shadow-md">
       <Link to={`/product/${product.itemId}`}>
         <img
-          src={`../../../../public/${product.image}`}
+          // src={`../../../../public/${product.image}`}
+          src={`${import.meta.env.BASE_URL}${product.image}`}
           className="mb-2 w-[224px] h-[130px] md:w-[223px] md:h-[196px] lg:w-[208px] lg:h-[196px] object-contain"
         />
 

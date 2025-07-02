@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 
-const baseUrl = "../../../../public";
+const baseUrl = import.meta.env.BASE_URL;
 
 type Props = {
   images: string[];

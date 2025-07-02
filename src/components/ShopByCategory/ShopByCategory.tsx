@@ -8,7 +8,8 @@ export const ShopByCategory = () => {
     <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-1 gap-4">
       <div className={divClass}>
         <img
-          src="../../../../public/img/category-phones1.png"
+          // src="../../../../public/img/category-phones1.png"
+          src={`${import.meta.env.BASE_URL}img/category-phones1.png`}
           className={imgClass}
         />
         <p className={textXlClass}>Mobile phones</p>
@@ -16,7 +17,8 @@ export const ShopByCategory = () => {
       </div>
       <div className={divClass}>
         <img
-          src="../../../../public/img/category-tablets1.png"
+          // src="../../../../public/img/category-tablets1.png"
+          src={`${import.meta.env.BASE_URL}img/category-tablets1.png`}
           className={imgClass}
         />
         <p className={textXlClass}>Tablets</p>
@@ -24,7 +26,8 @@ export const ShopByCategory = () => {
       </div>
       <div className={divClass}>
         <img
-          src="../../../../public/img/category-accessories1.png"
+          // src="../../../../public/img/category-accessories1.png"
+          src={`${import.meta.env.BASE_URL}img/category-accessories1.png`}
           className={imgClass}
         />
         <p className={textXlClass}>Accessories</p>

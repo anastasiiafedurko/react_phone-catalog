@@ -19,7 +19,7 @@ export const Banner: React.FC<Props> = ({ color }) => {
       </div>
       <div className="flex flex-col justify-center min-h-[inherit] p-4">
         <p className="text-white text-center">iPhone 16</p>
-        <img src="public/img/iPhone16.png" />
+        <img src={`${import.meta.env.BASE_URL}public/img/iPhone16.png`} />
       </div>
     </div>
   );
