@@ -55,6 +55,36 @@ export async function getProductByCategory<
   };
 }
 
+// export async function getProductsByCategory<
+//   T extends Phone | Tablet | Accessory
+// >(
+//   category: "phones" | "tablets" | "accessories",
+//   page: number,
+//   limit: number
+// ): Promise<{ items: Product<T>[]; total: number }> {
+//   const data = await getData<T[]>(`/${category}.json`);
+
+//   const startIndex = (page - 1) * limit;
+//   const paginatedItems = data.slice(startIndex, startIndex + limit);
+//   const itemIds = paginatedItems.map((item) => item.id);
+//   const total = data.length;
+
+//   const products = await getProducts();
+//   const foundProducts = products.filter((product) =>
+//     itemIds.includes(product.itemId)
+//   );
+
+//   const categoryProducts = foundProducts.map((product) => ({
+//     ...product,
+//     item: data.find((item) => item.id === product.itemId),
+//   }));
+
+//   return {
+//     items: categoryProducts,
+//     total,
+//   };
+// }
+
 export async function getProductsByCategory<
   T extends Phone | Tablet | Accessory
 >(

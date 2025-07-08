@@ -43,21 +43,23 @@ export const CartPage = () => {
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 border px-4 py-8 md:w-[300px] self-start">
-          <p className="price font-mont-semibold text-primary text-2xl">
-            ${totalPrice}
-          </p>
-          <p className="text-sm text-secondary">
-            Total for {ctxCart?.items.length} items
-          </p>
-          <hr className="mb-2" />
-          <button
-            type="button"
-            className="rounded-none h-[40px] w-full font-mont border border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary active:bg-white active:text-almost-green active:border active:border-secondary"
-          >
-            Checkout
-          </button>
-        </div>
+        {ctxCart && ctxCart?.items.length > 0 && (
+          <div className="flex flex-col gap-3 border px-4 py-8 md:w-[300px] self-start">
+            <p className="price font-mont-semibold text-primary text-2xl">
+              ${totalPrice}
+            </p>
+            <p className="text-sm text-secondary">
+              Total for {ctxCart?.items.length} items
+            </p>
+            <hr className="mb-2" />
+            <button
+              type="button"
+              className="rounded-none h-[40px] w-full font-mont border border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary active:bg-white active:text-almost-green active:border active:border-secondary"
+            >
+              Checkout
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

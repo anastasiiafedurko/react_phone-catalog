@@ -10,9 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { HomePage } from "./pages/HomePage.tsx";
-import { PhonesPage } from "./pages/PhonesPage.tsx";
-import { AccessoriesPage } from "./pages/AccessoriesPage.tsx";
-import { TabletsPage } from "./pages/TabletsPage.tsx";
+import { PhonesPage } from "./pages/ProductsPage.tsx";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage.tsx";
 import { CartPage } from "./pages/CartPage.tsx";
 import { CartProvider } from "./store/CartContext.tsx";
@@ -31,8 +29,6 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/" element={<App />}>
                 <Route path="home" element={<Navigate to="/" />} />
                 <Route path=":category" element={<PhonesPage />} />
-                <Route path=":category" element={<TabletsPage />} />
-                <Route path=":category" element={<AccessoriesPage />} />
                 <Route
                   path=":category/:productId"
                   element={<ProductDetailsPage />}

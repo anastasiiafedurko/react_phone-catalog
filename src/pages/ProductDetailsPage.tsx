@@ -69,22 +69,17 @@ export const ProductDetailsPage = () => {
     }
   }, [selectedProductId]);
 
-  function getProductByColor(color: string) {
+  function getProductVariantId(
+    namespaceId: string,
+    color: string,
+    capacity: string
+  ) {
     return products.find(
       (item) =>
-        item.itemId.includes(product?.item?.namespaceId || "") &&
-        item.capacity === product?.item?.capacity &&
+        item.itemId.includes(namespaceId || "") &&
+        item.capacity === capacity &&
         item.color === color
-    );
-  }
-
-  function getProductByCapacity(capacity: string) {
-    return products.find(
-      (item) =>
-        item.itemId.includes(product?.item?.namespaceId || "") &&
-        item.color === product?.item?.color &&
-        item.capacity === capacity
-    );
+    )?.itemId;
   }
 
   function hasCamera(
@@ -119,9 +114,11 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.colorsAvailable.map((color) => (
                       <Link
-                        to={`../../${category}/${
-                          getProductByColor(color)?.itemId
-                        }`}
+                        to={`../../${category}/${getProductVariantId(
+                          product.item?.namespaceId || "",
+                          color,
+                          product.item?.capacity || ""
+                        )}`}
                         key={color}
                       >
                         <button
@@ -145,9 +142,11 @@ export const ProductDetailsPage = () => {
                   <div className="flex flex-row gap-3">
                     {product.item?.capacityAvailable.map((capacity) => (
                       <Link
-                        to={`../../${category}/${
-                          getProductByCapacity(capacity)?.itemId
-                        }`}
+                        to={`../../${category}/${getProductVariantId(
+                          product.item?.namespaceId || "",
+                          product.item?.color || "",
+                          capacity
+                        )}`}
                         key={capacity}
                       >
                         <button

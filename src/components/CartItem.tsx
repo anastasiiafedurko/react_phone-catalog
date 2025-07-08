@@ -22,7 +22,10 @@ export const CartItem: React.FC<Props> = ({
   return (
     <div className="flex flex-col md:flex-row border items-center px-4 py-8 gap-4">
       <div className="flex items-center gap-4 w-full md:w-2/3">
-        <X className="h-4 w-4 text-secondary cursor-pointer" />
+        <X
+          className="h-4 w-4 text-secondary cursor-pointer"
+          onClick={onMinus}
+        />
 
         <img
           src={`${import.meta.env.BASE_URL}${image}`}

@@ -7,6 +7,7 @@ import { Outlet } from "react-router";
 import { Wrapper } from "./components/Wrapper/Wrapper";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
+import { Breadcrumbs } from "./components/Breadcrumps";
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
       <Header />
       <Wrapper>
         <main className="flex-grow">
+          <Breadcrumbs />
           <Outlet></Outlet>
         </main>
       </Wrapper>
