@@ -15,8 +15,8 @@ The app includes dynamic routing, reusable components, global state with Context
 
 - **Project structure**
 
-  - All components organized in folders inside `src/components` and `src/modules`
-  - CSS Modules used for styling
+  - All components organized in folders inside `src/components`
+  - Tailwind CSS used for styling
   - Page-based module architecture (HomePage, CartPage, etc.)
 
 - **General layout**
@@ -39,7 +39,7 @@ The app includes dynamic routing, reusable components, global state with Context
   - Loader and error states implemented
   - Sorting by Newest, Alphabetically, Cheapest
   - Pagination and items-per-page selector
-  - Parameters saved in URL (e.g. `?sort=age&page=2&perPage=8`)
+  - Parameters saved in URL (e.g. `?sortBy=age&page=2&perPage=8`)
 
 - **Product Details Page** (`/:category/:productId`)
 
