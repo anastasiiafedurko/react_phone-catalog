@@ -16,7 +16,7 @@ import { CartPage } from "./pages/CartPage.tsx";
 import { CartProvider } from "./store/CartContext.tsx";
 import { FavouritesProvider } from "./store/FavouritesContext.tsx";
 import { FavouritesPage } from "./pages/FavouritesPage.tsx";
-import { ScrollToTop } from "./components/ScrollToTop.tsx";
+import { ScrollToTop } from "./utils/ScrollToTop.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <Router>

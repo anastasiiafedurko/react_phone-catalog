@@ -7,7 +7,7 @@ import { Outlet } from "react-router";
 import { Wrapper } from "./components/Wrapper/Wrapper";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import { Breadcrumbs } from "./components/Breadcrumps";
+import { Breadcrumbs } from "./components/ui/Breadcrumps";
 
 export const App = () => {
   return (

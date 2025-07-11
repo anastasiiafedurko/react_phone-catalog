@@ -5,7 +5,7 @@ import { Product } from "../types/product";
 import { Phone } from "../types/phone";
 import { Tablet } from "../types/tablet";
 import { Accessory } from "../types/accessory";
-import { ProductGallery } from "../components/ProductGallery";
+import { ProductGallery } from "../components/ProductGallery/ProductGallery";
 import { IconButton } from "../components/ui/IconButton";
 import { Heart } from "lucide-react";
 import classNames from "classnames";

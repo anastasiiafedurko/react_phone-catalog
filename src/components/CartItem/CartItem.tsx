@@ -1,5 +1,5 @@
 import { Minus, Plus, X } from "lucide-react";
-import { IconButton } from "./ui/IconButton";
+import { IconButton } from "../ui/IconButton";
 
 type Props = {
   id: string;
