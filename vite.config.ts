@@ -38,7 +38,7 @@ const manifest: Partial<ManifestOptions> | false = {
   lang: "ru",
   name: "Nice Gadgets",
   short_name: "Gadgets",
-  start_url: "/",
+  start_url: "/react_phone-catalog/",
 };
 
 // https://vite.dev/config/
@@ -49,6 +49,7 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       workbox: {
         globPatterns: ["**/*.{html,css,js,ico,png,svg}"],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
       },
       manifest: manifest,
     }),
