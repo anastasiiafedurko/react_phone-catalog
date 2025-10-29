@@ -21,13 +21,13 @@ const manifest: Partial<ManifestOptions> | false = {
   ],
   screenshots: [
     {
-      src: "screenshots/desktop.png",
+      src: "/react_phone-catalog/screenshots/desktop.png",
       type: "image/png",
       sizes: "1701x1065",
       form_factor: "wide",
     },
     {
-      src: "screenshots/mobile.png",
+      src: "/react_phone-catalog/screenshots/mobile.png",
       type: "image/png",
       sizes: "689x935",
       form_factor: "narrow",
