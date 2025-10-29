@@ -7,16 +7,16 @@ export const NavbarMenu = [
   {
     id: 2,
     title: "phones",
-    link: "#",
+    link: "/phones",
   },
   {
     id: 3,
     title: "tablets",
-    link: "#",
+    link: "/tablets",
   },
   {
     id: 4,
     title: "accessories",
-    link: "#",
+    link: "/accessories",
   },
 ];
