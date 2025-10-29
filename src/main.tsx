@@ -18,6 +18,10 @@ import { FavouritesProvider } from "./store/FavouritesContext.tsx";
 import { FavouritesPage } from "./pages/FavouritesPage.tsx";
 import { ScrollToTop } from "./utils/ScrollToTop.tsx";
 
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({ immediate: true });
+
 createRoot(document.getElementById("root")!).render(
   <Router>
     <StrictMode>
