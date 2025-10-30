@@ -42,7 +42,7 @@ const manifest: Partial<ManifestOptions> | false = {
 };
 
 // https://vite.dev/config/
-export default defineConfig(() => ({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     VitePWA({
@@ -53,5 +53,5 @@ export default defineConfig(() => ({
       manifest: manifest,
     }),
   ],
-  base: "/",
+  base: mode === "production" ? "/react_phone-catalog/" : "/",
 }));
