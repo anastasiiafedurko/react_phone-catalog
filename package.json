@@ -15,6 +15,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
     "classnames": "^2.5.1",
+    "framer-motion": "^12.23.24",
     "gh-pages": "^6.3.0",
     "lodash": "^4.17.21",
     "lucide": "^0.479.0",
