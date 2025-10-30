@@ -1,6 +1,4 @@
-const BASE_URL = import.meta.env.PROD
-  ? "/react_phone-catalog/api"
-  : "http://localhost:5173/api";
+const BASE_URL = import.meta.env.PROD ? "/api" : "http://localhost:5173/api";
 
 export async function getData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then((response) => {
