@@ -21,13 +21,13 @@ const manifest: Partial<ManifestOptions> | false = {
   ],
   screenshots: [
     {
-      src: "/react_phone-catalog/screenshots/desktop.png",
+      src: "/screenshots/desktop.png",
       type: "image/png",
       sizes: "1701x1065",
       form_factor: "wide",
     },
     {
-      src: "/react_phone-catalog/screenshots/mobile.png",
+      src: "/screenshots/mobile.png",
       type: "image/png",
       sizes: "689x935",
       form_factor: "narrow",
@@ -38,7 +38,7 @@ const manifest: Partial<ManifestOptions> | false = {
   lang: "ru",
   name: "Nice Gadgets",
   short_name: "Gadgets",
-  start_url: "/react_phone-catalog/",
+  start_url: "/",
 };
 
 // https://vite.dev/config/
