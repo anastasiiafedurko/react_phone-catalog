@@ -16,6 +16,8 @@ export const getPaginationRange = (
     return result;
   }
 
+  console.log(limit);
+
   const leftSiblingsIndex = Math.max(page - siblings, 1);
   const showLeftDots = leftSiblingsIndex > 2;
 
