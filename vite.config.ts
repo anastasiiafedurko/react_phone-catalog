@@ -53,5 +53,5 @@ export default defineConfig(({ mode }) => ({
       manifest: manifest,
     }),
   ],
-  base: mode === "production" ? "/react_phone-catalog/" : "/",
+  base: "/",
 }));
