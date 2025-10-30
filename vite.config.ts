@@ -42,7 +42,7 @@ const manifest: Partial<ManifestOptions> | false = {
 };
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(() => ({
   plugins: [
     react(),
     VitePWA({
