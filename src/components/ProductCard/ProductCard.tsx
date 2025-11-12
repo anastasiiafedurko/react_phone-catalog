@@ -17,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { addProductToFavourites, isInFavourites } = useFavouritesActions();
 
   return (
-    <div className="flex flex-col justify-between w-[212px] md:w-[237px] lg:w-[272px] h-[432px] md:h-[512px] lg:h-[506px] p-8 border shadow-md">
+    <div className="flex flex-col justify-between w-[287px] md:w-[237px] lg:w-[272px] h-[432px] md:h-[512px] lg:h-[506px] p-8 border shadow-md">
       <Link to={`/${product.category}/${product.itemId}`}>
         <img
           // src={`../../../../public/${product.image}`}

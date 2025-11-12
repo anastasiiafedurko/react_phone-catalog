@@ -10,7 +10,7 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap justify-center gap-4">
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}

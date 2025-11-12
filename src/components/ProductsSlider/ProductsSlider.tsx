@@ -42,6 +42,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, children }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "40px",
         },
       },
     ],

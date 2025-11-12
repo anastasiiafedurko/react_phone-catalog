@@ -3,7 +3,7 @@ import { ShoppingBag } from "lucide-react";
 import { Heart } from "lucide-react";
 import { useContext, useState } from "react";
 import { NavbarMenu } from "../NavBar/data";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../../store/CartContext";
 import { FavouritesContext } from "../../store/FavouritesContext";
 import { CartItemType } from "../../types/cartItem";
@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const count = 3;
+  const navigate = useNavigate();
 
   const cartCtx = useContext(CartContext);
   const favouritesCtx = useContext(FavouritesContext);
@@ -24,6 +24,11 @@ export const Header = () => {
   );
 
   const totalFavouritesItems = favouritesCtx?.items.length;
+
+  const handleClick = (path: string) => {
+    setIsOpen(false);
+    navigate(path);
+  };
 
   return (
     <header className="w-full border-b shadow-md bg-white">
@@ -111,13 +116,12 @@ export const Header = () => {
                 <div className="flex items-center justify-between px-6 py-4 border-b shadow-sm">
                   {/* Logo */}
                   <div className="text-xl font-bold flex flex-col leading-tight">
-                    <a href="#">
-                      <img
-                        src="/img/logo.png"
-                        alt="Logo"
-                        className="w-20 h-15"
-                      />
-                    </a>
+                    <img
+                      src="/img/logo.png"
+                      alt="Logo"
+                      className="w-20 h-15"
+                      onClick={() => handleClick("#")}
+                    />
                   </div>
 
                   {/* Close button */}
@@ -154,7 +158,7 @@ export const Header = () => {
                     {NavbarMenu.map((item) => (
                       <li key={item.id}>
                         <NavLink
-                          to={item.link} // ← тут має бути шлях, не title
+                          to={item.link}
                           onClick={() => setIsOpen(false)}
                           className="relative block py-3 px-3 font-mont-semibold font-[800] text-[12px] leading-[11px] tracking-[4%] uppercase hover:text-primary
         after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-black after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-90"
@@ -168,23 +172,27 @@ export const Header = () => {
 
                 {/* Icons */}
                 <div className="absolute bottom-6 left-0 w-full flex justify-center space-x-40">
-                  <button className="relative inline-flex items-center p-3 text-sm font-medium text-center">
-                    <Heart />
-                    <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-almost-red border-2 border-white rounded-full -top-0 -end-0">
-                      {count}
-                    </div>
-                  </button>
-                  <NavLink to={"/cart"}>
+                  <div className="absolute bottom-6 left-0 w-full flex justify-center space-x-40">
                     <button
-                      type="button"
+                      onClick={() => handleClick("/favourites")}
+                      className="relative inline-flex items-center p-3 text-sm font-medium text-center"
+                    >
+                      <Heart />
+                      <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-almost-red border-2 border-white rounded-full -top-0 -end-0 dark:border-wite-900">
+                        {totalFavouritesItems}
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => handleClick("/cart")}
                       className="relative inline-flex items-center p-3 text-sm font-medium text-center"
                     >
                       <ShoppingBag />
-                      <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-almost-red border-2 border-white rounded-full -top-0 -end-0">
-                        {count}
+                      <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-almost-red border-2 border-white rounded-full -top-0 -end-0 dark:border-wite-900">
+                        {totalCartItems}
                       </div>
                     </button>
-                  </NavLink>
+                  </div>
                 </div>
               </motion.div>
             </>

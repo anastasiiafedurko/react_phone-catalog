@@ -103,13 +103,20 @@ export const ProductDetailsPage = () => {
               {product.name}
             </h1>
 
-            <div className="flex flex-col md:flex-row w-full gap-20">
-              <div className="w-[65%]">
+            <div className="relative left-0 right-0 flex flex-col md:flex-row w-full md:w-auto gap-20">
+              <div className="w-full md:w-[65%]">
                 <ProductGallery images={product.item?.images || []} />
               </div>
-              <div className="w-[30%] flex flex-col gap-6">
-                <div>
-                  <p className="text-secondary">Available colors</p>
+
+              <div className="w-full md:w-[30%] flex flex-col gap-6">
+                <div className="flex flex-col md:flex-col w-full gap-1">
+                  <div className="flex flex-row justify-between items-center">
+                    <p className="text-secondary">Available colors</p>
+
+                    <p className="flex flex-row gap-3 text-secondary mt-1 md:mt-2">
+                      ID: {product.id}
+                    </p>
+                  </div>
 
                   <div className="flex flex-row gap-3">
                     {product.item?.colorsAvailable.map((color) => (
@@ -137,6 +144,7 @@ export const ProductDetailsPage = () => {
 
                 <hr className="mb-2" />
 
+                {/* Select capacity */}
                 <div>
                   <p className="text-secondary">Select capacity</p>
                   <div className="flex flex-row gap-3">
@@ -154,7 +162,7 @@ export const ProductDetailsPage = () => {
                           className={classNames(
                             "rounded-none h-[32px] w-auto font-mont px-3 border border-primary text-xs md:text-sm whitespace-nowrap",
                             capacity === product.capacity
-                              ? "bg-primary text-white "
+                              ? "bg-primary text-white"
                               : "bg-white text-primary"
                           )}
                         >
@@ -164,8 +172,10 @@ export const ProductDetailsPage = () => {
                     ))}
                   </div>
                 </div>
+
                 <hr className="mb-2" />
 
+                {/* Price */}
                 <div className="flex flex-row gap-1">
                   <p className="price font-mont-semibold text-primary text-3xl">
                     ${product.fullPrice}
@@ -175,12 +185,12 @@ export const ProductDetailsPage = () => {
                   </p>
                 </div>
 
+                {/* Add to cart & favourites */}
                 <div className="flex flex-row gap-1">
                   <button
                     type="button"
                     className={classNames(
-                      "flex-auto rounded-none h-[40px] w-auto font-mont border ",
-
+                      "flex-auto rounded-none h-[40px] w-auto font-mont border",
                       isInCart(product.id)
                         ? "text-almost-green border border-secondary bg-white"
                         : "border-primary text-white text-xs md:text-sm whitespace-nowrap bg-primary"
@@ -209,6 +219,7 @@ export const ProductDetailsPage = () => {
                   )}
                 </div>
 
+                {/* Technical specs */}
                 <div className="grid grid-rows-3 grid-cols-2 mb-2 text-xs">
                   <p className="text-secondary">Screen</p>
                   <p className="text-primary text-end">{product.screen}</p>
@@ -224,15 +235,11 @@ export const ProductDetailsPage = () => {
                   <p className="text-primary text-end">{product.ram}</p>
                 </div>
               </div>
-
-              <div className="w-[5%]">
-                <p className="text-secondary">ID: {product.id}</p>
-              </div>
             </div>
           </div>
 
           <div className="flex flex-col md:flex-row w-full gap-14 my-10">
-            <div className="w-[50%]">
+            <div className="w-full md:w-[50%]">
               <h1 className="text-2xl font-mont-bold text-primary my-5">
                 About
               </h1>
@@ -248,7 +255,7 @@ export const ProductDetailsPage = () => {
               ))}
             </div>
 
-            <div className="w-[50%]">
+            <div className="w-full md:w-[50%]">
               <h1 className="text-2xl font-mont-bold text-primary my-5">
                 Tech specs
               </h1>
